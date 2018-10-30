@@ -1,17 +1,23 @@
-function createGrid(){
-    let container = document.querySelector('.gridContainer');
-    for(let i=0; i<16; i++){
-        let gridRow = document.createElement('div');
-        for(let j=0; j<16; j++){
-            let gridSquare = document.createElement('div');
+function createGrid(squaresPerSide){
+    const container = document.querySelector('.gridContainer');
+    container.setAttribute('style', `grid-template-columns: repeat(${squaresPerSide}, ${32/squaresPerSide}em [col-start]);
+                            grid-template-rows: repeat(${squaresPerSide}, ${22/squaresPerSide}em [row-start])`);
+
+    for(let i=0; i<squaresPerSide; i++){
+        const gridColumn = document.createElement('div');
+        for(let j=0; j<squaresPerSide; j++){
+            const gridSquare = document.createElement('div');
             gridSquare.className = 'empty';
-            gridRow.appendChild(gridSquare);
+            gridColumn.appendChild(gridSquare);
+            gridSquare.setAttribute('style', `width: ${32/squaresPerSide}em; height: ${22/squaresPerSide}em`);  
         }
-        container.appendChild(gridRow);
+        container.appendChild(gridColumn);    
+        gridColumn.setAttribute('style', `grid-row-end: ${squaresPerSide + 1}`);
     } 
 }
 
-createGrid();
+createGrid(100);
 
 const draw = document.querySelectorAll('.empty');
-draw.forEach((draw) => {draw.addEventListener('mouseover', (e) => {draw.classList.add('filled')})});
+draw.forEach((cell) => {cell.addEventListener('mouseover', (e) => {cell.classList.add('filled')})});
+

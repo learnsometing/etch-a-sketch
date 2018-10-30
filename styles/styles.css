@@ -7,8 +7,8 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    width:25em;
-    height:20em;
+    width: 45em;
+    height: 35em;
     background-color:red;
 }
 
@@ -16,8 +16,8 @@ body{
     position:relative;
     height: fit-content;
     display:inline-grid;
-    grid-template-columns:repeat(16, 1em [col-start]);
-    grid-template-rows:repeat(16, 1em [row-start]);
+    grid-template-columns: repeat(16, 2em [col-start]);
+    grid-template-rows: repeat(16, 1.375em [row-start]);
 }
 
 div div div {
@@ -30,15 +30,15 @@ div div div {
 div div div div{
     position:relative;
     box-sizing:border-box;
-    width: 1em;
-    height: 1em;
+    width: 2em;
+    height: 1.375em;
     background-color:lightyellow;
 }
 
 .filled{
     position:relative;
     box-sizing:border-box;
-    width: 1em;
-    height: 1em;
-    background-color:black;;
+    width: 2em;
+    height: 1.375em;
+    background-color:black;
 }
