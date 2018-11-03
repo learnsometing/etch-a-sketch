@@ -1,7 +1,18 @@
+function setGridCellDimensions(node, squaresPerSide){
+    const gridContainerWidth = 32
+          , gridContainerHeight = 22;
+
+    let cellWidth = gridContainerWidth/squaresPerSide
+    , cellHeight = gridContainerHeight/squaresPerSide;
+
+    node.setAttribute('style', `grid-template-columns: repeat(${squaresPerSide}, ${cellWidth}em [col-start]);
+                        grid-template-rows: repeat(${squaresPerSide}, ${cellHeight}em [row-start])`);
+}
+
 function createGrid(squaresPerSide){
-    const container = document.querySelector('.gridContainer');
-    container.setAttribute('style', `grid-template-columns: repeat(${squaresPerSide}, ${32/squaresPerSide}em [col-start]);
-                            grid-template-rows: repeat(${squaresPerSide}, ${22/squaresPerSide}em [row-start])`);
+    const gridContainer = document.querySelector('.gridContainer')
+
+    setGridCellDimensions(gridContainer, squaresPerSide);
 
     for(let i=0; i<squaresPerSide; i++){
         const gridColumn = document.createElement('div');
@@ -12,7 +23,7 @@ function createGrid(squaresPerSide){
             gridColumn.appendChild(gridSquare);
             gridSquare.setAttribute('style', `width: ${32/squaresPerSide}em; height: ${22/squaresPerSide}em`);  
         }
-        container.appendChild(gridColumn);    
+        gridContainer.appendChild(gridColumn);    
         gridColumn.setAttribute('style', `grid-row-end: ${parseInt(squaresPerSide) + 1}`);
     } 
 
