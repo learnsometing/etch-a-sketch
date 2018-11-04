@@ -1,33 +1,42 @@
-function setGridCellDimensions(node, squaresPerSide){
-    const gridContainerWidth = 32
-          , gridContainerHeight = 22;
+const gridWidth = 32
+,   gridHeight = 22
+,   grid = document.querySelector('.grid')
+,   reset = document.querySelector('button');
 
-    let cellWidth = gridContainerWidth/squaresPerSide
-    , cellHeight = gridContainerHeight/squaresPerSide;
+reset.addEventListener('click', (e) => {resetButton()});
+createGrid(16);
 
-    node.setAttribute('style', `grid-template-columns: repeat(${squaresPerSide}, ${cellWidth}em [col-start]);
-                        grid-template-rows: repeat(${squaresPerSide}, ${cellHeight}em [row-start])`);
-}
+function createGrid(cellsPerSide){
 
-function createGrid(squaresPerSide){
-    const gridContainer = document.querySelector('.gridContainer')
+    setGridDimensions(cellsPerSide);
 
-    setGridCellDimensions(gridContainer, squaresPerSide);
-
-    for(let i=0; i<squaresPerSide; i++){
-        const gridColumn = document.createElement('div');
-        gridColumn.classList.add('column');
-        for(let j=0; j<squaresPerSide; j++){
-            const gridSquare = document.createElement('div');
-            gridSquare.className = 'empty';
-            gridColumn.appendChild(gridSquare);
-            gridSquare.setAttribute('style', `width: ${32/squaresPerSide}em; height: ${22/squaresPerSide}em`);  
-        }
-        gridContainer.appendChild(gridColumn);    
-        gridColumn.setAttribute('style', `grid-row-end: ${parseInt(squaresPerSide) + 1}`);
-    } 
+    populateGridColumnsAndRows(cellsPerSide);    
 
     enableDrawing();
+}
+
+function setGridDimensions(cellsPerSide){
+
+    let cellWidth = gridWidth/cellsPerSide
+    , cellHeight = gridHeight/cellsPerSide;
+
+    grid.setAttribute('style', `grid-template-columns: repeat(${cellsPerSide}, ${cellWidth}em [col-start]); 
+    grid-template-rows: repeat(${cellsPerSide}, ${cellHeight}em [row-start])`);
+}
+
+function populateGridColumnsAndRows(cellsPerSide){
+    for(let i=0; i<cellsPerSide; i++){    //This for-loop creates each grid column div.//
+        const gridColumn = document.createElement('div');
+        gridColumn.classList.add('column');
+        for(let j=0; j<cellsPerSide; j++){    //This for-loop creates the grid cell divs that reside in each grid column.//
+            const gridCell = document.createElement('div');
+            gridCell.className = 'empty';
+            gridColumn.appendChild(gridCell);
+            gridCell.setAttribute('style', `width: ${gridWidth/cellsPerSide}em; height: ${gridHeight/cellsPerSide}em`);  
+        }
+        grid.appendChild(gridColumn);    
+        gridColumn.setAttribute('style', `grid-row-end: ${parseInt(cellsPerSide) + 1}`);
+    } 
 }
 
 function enableDrawing(){
@@ -44,11 +53,6 @@ function clearGrid(){
 
 function resetButton(){
     clearGrid();
-    createGrid(prompt('How many squares per side?'));
+    createGrid(prompt('How many cells per side?'));
 }
-
-const reset = document.querySelector('#reset');
-reset.addEventListener('click', (e) => {resetButton()});
-
-createGrid(16);
 

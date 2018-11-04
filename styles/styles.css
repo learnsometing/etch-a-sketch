@@ -5,19 +5,49 @@ body{
 
 #frame{
     display:flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     width: 45em;
     height: 35em;
-    background-color:red;
+    margin:1em;
+    border-style:outset;
+    border-width: 1em;
+    border-right-color: red;
+    border-bottom-color: red;
+    border-top-color: lightcoral;
+    border-left-color: lightcoral;
+    background-color: red;
 }
 
-.gridContainer {
+.lettering{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height: 6.5em;
+    width:45em;
+}
+
+p{
+    margin:1em;
+    font-size:20px;
+    color: darkgoldenrod;
+}
+
+h1{
+    font-size:3em;
+}
+
+p, h1{
+    color:darkgoldenrod;
+    font-style:italic;
+}
+
+.grid {
     position:relative;
     height: fit-content;
     display:inline-grid;
-    grid-template-columns: repeat(16, 2em [col-start]);
-    grid-template-rows: repeat(16, 1.375em [row-start]);
+    border: 2px solid black;
+    border-radius: 4px;
 }
 
 div div div {
@@ -41,4 +71,48 @@ div div div div{
     width: 2em;
     height: 1.375em;
     background-color:black;
+}
+
+.resetAndDials{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height: 6.5em;
+    width:45em;
+}
+
+.dial{
+    width: 6em;
+    height: 6em;
+    border-radius:50%;
+    background-color:white;
+    border: 2px dotted;
+}
+
+button {
+    font-size: 2em;
+    width: 15em;
+    height: 2em;
+    margin: 0 0.5em;
+    cursor: pointer;
+    background-color: red;
+    font-family:serif;
+    font-style: italic;
+    color: darkgoldenrod;
+    border: 2px outset darkgoldenrod;
+    box-shadow: 0 3px darkgoldenrod;
+}
+
+button:hover{
+    background-color: hsl(0, 99%, 45%);
+}
+
+button:focus{
+    outline:none;
+}
+
+button:active {
+    background-color: hsl(0, 99%, 45%);
+    box-shadow: 0 1px darkgoldenrod;
+    transform: translateY(4px);
 }
