@@ -6,11 +6,17 @@ const gridWidth = 32
 reset.addEventListener('click', (e) => {resetButton()});
 createGrid(16);
 
-function createGrid(cellsPerSide){
+function createGrid(cellsPerSide){ 
+    cellsPerSide = parseFloat(cellsPerSide);
+    
+    while (isNaN(cellsPerSide)){
+        alert("You have entered a non-number. Please try again.")
+        cellsPerSide = prompt("How many cells per side?");  
+    }
 
     setGridDimensions(cellsPerSide);
 
-    populateGridColumnsAndRows(cellsPerSide);    
+    populateGrid(cellsPerSide);    
 
     enableDrawing();
 }
@@ -24,11 +30,12 @@ function setGridDimensions(cellsPerSide){
     grid-template-rows: repeat(${cellsPerSide}, ${cellHeight}em [row-start])`);
 }
 
-function populateGridColumnsAndRows(cellsPerSide){
-    for(let i=0; i<cellsPerSide; i++){    //This for-loop creates each grid column div.//
+function populateGrid(cellsPerSide){
+    for(let i=0; i<cellsPerSide; i++){    //This for-loop creates each grid column div.
         const gridColumn = document.createElement('div');
         gridColumn.classList.add('column');
-        for(let j=0; j<cellsPerSide; j++){    //This for-loop creates the grid cell divs that reside in each grid column.//
+        for(let j=0; j<cellsPerSide; j++){    /*This for-loop creates the grid cell divs that reside in each grid 
+                                                column and sets their dimensions. */
             const gridCell = document.createElement('div');
             gridCell.className = 'empty';
             gridColumn.appendChild(gridCell);

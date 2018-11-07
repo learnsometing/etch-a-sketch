@@ -12,9 +12,9 @@ body{
     margin:1em;
     border-style:outset;
     border-width: 1em;
+    border-top-color: lightcoral;
     border-right-color: red;
     border-bottom-color: red;
-    border-top-color: lightcoral;
     border-left-color: lightcoral;
     background-color: red;
 }
@@ -50,26 +50,21 @@ p, h1{
     border-radius: 4px;
 }
 
-div div div {
+.column {
     grid-column-start: auto;
     grid-column-end: auto;
     grid-row-start: 1;
-    grid-row-end: 17;
 }
 
-div div div div{
+.empty{
     position:relative;
     box-sizing:border-box;
-    width: 2em;
-    height: 1.375em;
     background-color:lightyellow;
 }
 
 .filled{
     position:relative;
     box-sizing:border-box;
-    width: 2em;
-    height: 1.375em;
     background-color:black;
 }
 
