@@ -11,4 +11,7 @@ Unleash your inner artist in this browser edition of the magical etch-a-sketch s
 ## Play!
 Mouse over the drawing area of the etch-a-sketch and watch your vision come to life. If you would like
 to change the precision of the drawing, hit the reset button to clear your work and then enter a new 
-number of squares to make up each side of the grid. 
+number of squares to make up each side of the grid.
+
+## Authors
+Brian Monaccio
